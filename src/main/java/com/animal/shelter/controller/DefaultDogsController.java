@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.animal.shelter.entity.Dogs;
 import com.animal.shelter.entity.Gender;
-import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
 import com.animal.shelter.service.DogsService;
 

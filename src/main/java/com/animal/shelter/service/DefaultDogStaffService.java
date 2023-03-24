@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.animal.shelter.dao.DogStaffDao;
 import com.animal.shelter.entity.DogStaff;
-import com.animal.shelter.entity.Dogs;
-import com.animal.shelter.entity.Staff;
 
 @Service
 

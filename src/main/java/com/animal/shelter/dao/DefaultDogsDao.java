@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -18,10 +17,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import com.animal.shelter.entity.Dogs;
 import com.animal.shelter.entity.Gender;
-import com.animal.shelter.dao.DefaultDogsDao.SqlParams;
-import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
-import lombok.extern.slf4j.Slf4j;
 
 @Component
 

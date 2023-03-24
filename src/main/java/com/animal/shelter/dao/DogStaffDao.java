@@ -2,8 +2,6 @@ package com.animal.shelter.dao;
 
 import java.util.List;
 import com.animal.shelter.entity.DogStaff;
-import com.animal.shelter.entity.Dogs;
-import com.animal.shelter.entity.Staff;
 
 public interface DogStaffDao {
 

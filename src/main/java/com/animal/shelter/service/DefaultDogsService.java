@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.animal.shelter.entity.Dogs;
 import com.animal.shelter.entity.Gender;
 import com.animal.shelter.dao.DogsDao;
-import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
 
 @Service

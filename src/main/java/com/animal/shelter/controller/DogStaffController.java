@@ -17,8 +17,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import com.animal.shelter.entity.DogStaff;
-import com.animal.shelter.entity.Dogs;
-import com.animal.shelter.entity.Staff;
 
 @Validated
 @RequestMapping("/DogStaff")

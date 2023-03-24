@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import com.animal.shelter.entity.Dogs;
 import com.animal.shelter.entity.Gender;
-import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
 
 public interface DogsDao {
