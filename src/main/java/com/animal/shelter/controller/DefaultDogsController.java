@@ -47,14 +47,14 @@ public class DefaultDogsController implements DogsController {
   // Post (create dogs)
   @Override
   public Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size,
-      int clientId) {
+      Integer clientId) {
     return dogService.createDogs(dogName, gender, birthday, breed, size, clientId);
   }
 
   // Put (update dogs)
   @Override
   public Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed,
-      Size size, int clientId) {
+      Size size, Integer clientId) {
     return dogService.updateDogs(dogId, dogName, gender, birthday, breed, size, clientId);
   }
 

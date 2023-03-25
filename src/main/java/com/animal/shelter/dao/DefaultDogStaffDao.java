@@ -27,7 +27,7 @@ public class DefaultDogStaffDao implements DogStaffDao {
     //@formatter:off
       String sql = ""
           + "SELECT * "
-          + "FROM DogStaff;";
+          + "FROM dog_staff;";
       //@formatter:on
 
     // Map<String, Object> params = new HashMap<>(); May not need this
@@ -64,7 +64,7 @@ public class DefaultDogStaffDao implements DogStaffDao {
  public DogStaff updateDogStaff(int dogId, int staffId) {
    //@formatter:off
       String sql = ""
-          + "UPDATE DogStaff "
+          + "UPDATE dog_staff "
           + "SET " 
           + "dog_id = :dog_id, "
           + "staff_id = :staff_id;";

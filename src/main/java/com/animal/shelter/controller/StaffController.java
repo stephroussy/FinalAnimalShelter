@@ -8,22 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import com.animal.shelter.entity.Staff;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.servers.Server;
 
 @Validated
 @RequestMapping("/Staff")
-@OpenAPIDefinition(info = @Info(title = "Staff"),
-    servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
 
 public interface StaffController {
 
@@ -54,7 +48,7 @@ public interface StaffController {
              content = @Content(mediaType = "application/json")),
      }
  )
- @GetMapping("/all")
+ @GetMapping("/allStaff")
  @ResponseStatus(code = HttpStatus.OK)
  List<Staff> fetchAllStaff();  
   
@@ -91,17 +85,15 @@ public interface StaffController {
             @Parameter(
                 name = "staffLastName",
                 allowEmptyValue = false,
-                required = true,
+                required = false,
                 description = "The staff's last name (i.e., 'Smith')") 
        }
     )
     
     // Get method (read)
-    @GetMapping("/staffbylastname")
+    @GetMapping("/staffByLastName")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Staff> fetchStaffByLastName(
-        @RequestParam(required = false)
-        String staffLastName);
+    List<Staff> fetchStaffByLastName(String staffLastName);
     
   //Reads Staff with specified staff id
    
@@ -142,11 +134,9 @@ public interface StaffController {
     )
     
     // Get method (read)
-    @GetMapping("/staffbystaffid")
+    @GetMapping("/staffByStaffId")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Staff> fetchStaffByStaffId(
-        @RequestParam(required = false)
-        int staffId);
+    List<Staff> fetchStaffByStaffId(int staffId);
     
   //Create a new Staff
 
@@ -193,11 +183,7 @@ public interface StaffController {
     // Post method (create)
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Staff createStaff(
-        @RequestParam(required = false)
-        String staffFirstName,
-        @RequestParam(required = false)
-        String staffLastName);
+    Staff createStaff(String staffFirstName, String staffLastName);
 
   //Update an existing Staff
   
@@ -247,7 +233,7 @@ public interface StaffController {
         }
     )
     
-    //Put method (update)
+    //Delete method
  
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
@@ -272,7 +258,7 @@ public interface StaffController {
   // Delete method (Delete)
   @DeleteMapping
   @ResponseStatus(code = HttpStatus.OK)
-  void deleteStaff(@RequestParam(required = false) int staffId);
+  void deleteStaff(int staffId);
 
   //@formatter:on
 }

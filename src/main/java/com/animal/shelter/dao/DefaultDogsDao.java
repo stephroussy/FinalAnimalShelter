@@ -49,7 +49,7 @@ public class DefaultDogsDao implements DogsDao {
             .birthday(rs.getDate("birthday"))
             .breed(rs.getString("breed"))
             .size(Size.valueOf(rs.getString("size")))
-            .clientId(rs.getInt("client _id"))
+            .clientId(rs.getInt("client_id"))
             .build();
         //@formatter:on
       }
@@ -167,12 +167,10 @@ public class DefaultDogsDao implements DogsDao {
     });
   }
 
-
   // Post method to create a new dog within the dogs table
 
-
   public Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size,
-      int clientId) {
+      Integer clientId) {
     SqlParams sqlparams = new SqlParams();
     KeyHolder keyHolder = new GeneratedKeyHolder();
     sqlparams.sql =
@@ -201,7 +199,7 @@ public class DefaultDogsDao implements DogsDao {
 
   @Override
   public Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed,
-      Size size, int clientId) {
+      Size size, Integer clientId) {
     //@formatter:off
      String sql = ""
          + "UPDATE dogs "

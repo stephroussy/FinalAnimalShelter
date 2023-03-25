@@ -6,22 +6,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.servers.Server;
 import com.animal.shelter.entity.DogStaff;
 
 @Validated
 @RequestMapping("/DogStaff")
-@OpenAPIDefinition(info = @Info(title = "DogStaff"),
-    servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
 
 public interface DogStaffController {
 
@@ -52,7 +46,7 @@ public interface DogStaffController {
              content = @Content(mediaType = "application/json")),
      }
  )
- @GetMapping("/all")
+ @GetMapping("/allDogStaff")
  @ResponseStatus(code = HttpStatus.OK)
  List<DogStaff> fetchAllDogStaff();  
     
@@ -97,9 +91,7 @@ public interface DogStaffController {
     // Get method (read)
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
-    List<DogStaff> fetchDogsByStaffId(
-        @RequestParam(required = false)
-        int staffId);
+    List<DogStaff> fetchDogsByStaffId(int staffId);
 
   //Update dogStaff table 
     

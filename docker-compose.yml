@@ -11,23 +11,23 @@ services:
     restart: always
     environment:
       # These environment variables cause MySQL to create the users username/password
-      # root/root and dev/dev. It also creates a database named jeep.
+      # root/root and dev/dev. It also creates a database named animal.
       MYSQL_ROOT_USER: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: jeep
-      MYSQL_USER: jeep
-      MYSQL_PASSWORD: jeep
+      MYSQL_DATABASE: animal
+      MYSQL_USER: animal
+      MYSQL_PASSWORD: animal
     ports:
       # Forward host port 8306 to guest port 3306 (MySQL default port). This means that applications external to the
       # container cluster can access MySQL within the container on port 8306 and the requests are forwarded to port 3306
       # within the cluster.
       - "8306:3306"
     networks:
-      - jeep
+      - animal
 
   # Flyway is used to create the tables and populate them with data. The migration files are found in 
-  # src/functional-test/resources. The schema is applied first to create the tables (V1.0__Jeep_Schema.sql) and 
-  # then the data is applied in V1.1__Jeep_Data.sql. Note that these files are also applied for each functional
+  # src/functional-test/resources. The schema is applied first to create the tables (V1.0__animal_Schema.sql) and 
+  # then the data is applied in V1.1__animal_Data.sql. Note that these files are also applied for each functional
   # (integration) test using the @Sql annotation in the functional test classes.
   flyway:
     container_name: flyway
@@ -37,9 +37,9 @@ services:
     # These environment variables are used in ./flyway/conf/flyway.conf to tell Flyway which database to connect to.
     environment:
       FLYWAY_URL: jdbc:mysql://db
-      FLYWAY_SCHEMAS: jeep
-      FLYWAY_USER: jeep
-      FLYWAY_PASSWORD: jeep
+      FLYWAY_SCHEMAS: animal
+      FLYWAY_USER: animal
+      FLYWAY_PASSWORD: animal
       
       # Set the retry count to let the database come up before Flyway gives up.
       FLYWAY_CONNECT_RETRIES: 60
@@ -54,10 +54,10 @@ services:
     depends_on:
       - db
     networks:
-      - jeep
+      - animal
 
 # Create a bridge network between the MySQL container and the Flyway container.
 networks:
-  jeep:
+  animal:
     driver: bridge
-    name: jeep-to-jeep
+    name: animal-to-animal

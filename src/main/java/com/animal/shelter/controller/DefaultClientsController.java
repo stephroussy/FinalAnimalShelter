@@ -32,10 +32,9 @@ public class DefaultClientsController implements ClientsController {
   // Get (read ALL clients with specified client id)
 
   @Override
-  public List<Clients> fetchClientsByClientId(int clientId) {
+  public List<Clients> fetchClientsByClientId(Integer clientId) {
     return clientService.fetchClientsByClientId(clientId);
   }
-
 
   // Post (create clients)
   @Override
@@ -45,7 +44,7 @@ public class DefaultClientsController implements ClientsController {
 
   // Put (update Clients)
   @Override
-  public Clients updateClients(int clientId, String clientFirstName, String clientLastName,
+  public Clients updateClients(Integer clientId, String clientFirstName, String clientLastName,
       String address) {
     return clientService.updateClients(clientId, clientFirstName, clientLastName, address);
   }

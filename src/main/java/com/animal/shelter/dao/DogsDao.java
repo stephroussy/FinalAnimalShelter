@@ -27,11 +27,11 @@ public interface DogsDao {
   // Post (create dogs)
 
   Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size,
-      int clientId);
+      Integer clientId);
 
   // Put (update dogs)
 
   Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed, Size size,
-      int clientId);
+      Integer clientId);
 
 }

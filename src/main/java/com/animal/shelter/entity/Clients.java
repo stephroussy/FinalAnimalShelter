@@ -14,7 +14,7 @@ public class Clients {
 
   // process begins by labeling the different variables within the clients table
 
-  private int clientId;
+  private Integer clientId;
 
   private String clientFirstName;
 

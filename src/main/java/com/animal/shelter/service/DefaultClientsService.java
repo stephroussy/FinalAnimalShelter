@@ -35,7 +35,7 @@ public class DefaultClientsService implements ClientsService {
 
   @Transactional(readOnly = true)
   @Override
-  public List<Clients> fetchClientsByClientId(int clientId) {
+  public List<Clients> fetchClientsByClientId(Integer clientId) {
     List<Clients> clients = clientsDao.fetchClientsByClientId(clientId);
     return clients;
   }
@@ -49,7 +49,7 @@ public class DefaultClientsService implements ClientsService {
 
   // Put (update clients)
 
-  public Clients updateClients(int clientId, String clientFirstName, String clientLastName,
+  public Clients updateClients(Integer clientId, String clientFirstName, String clientLastName,
       String address) {
     return clientsDao.updateClients(clientId, clientFirstName, clientLastName, address);
   }

@@ -18,7 +18,7 @@ public interface ClientsService {
 
   // Get (read ALL clients with specified client id)
 
-  List<Clients> fetchClientsByClientId(int clientId);
+  List<Clients> fetchClientsByClientId(Integer clientId);
 
   // Post (create clients)
 
@@ -26,7 +26,7 @@ public interface ClientsService {
 
   // Put (update Clients)
 
-  Clients updateClients(int clientId, String clientFirstName, String clientLastName,
+  Clients updateClients(Integer clientId, String clientFirstName, String clientLastName,
       String address);
 
 

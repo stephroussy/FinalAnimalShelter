@@ -92,11 +92,9 @@ public class DefaultClientsDao implements ClientsDao {
     });
   }
 
-
-
   // Get method to read clients with specified client id)
 
-  public List<Clients> fetchClientsByClientId(int clientId) {
+  public List<Clients> fetchClientsByClientId(Integer clientId) {
     // @formatter:off
       String sql = ""
           + "SELECT * "
@@ -122,9 +120,7 @@ public class DefaultClientsDao implements ClientsDao {
     });
   }
 
-
   // Post method to create a new client within the clients table
-
 
   public Clients createClients(String clientFirstName, String clientLastName, String address) {
     SqlParams sqlparams = new SqlParams();
@@ -151,7 +147,7 @@ public class DefaultClientsDao implements ClientsDao {
   // Put method to update Client within Clients table
 
   @Override
-  public Clients updateClients(int clientId, String clientFirstName, String clientLastName,
+  public Clients updateClients(Integer clientId, String clientFirstName, String clientLastName,
       String address) {
     //@formatter:off
        String sql = ""

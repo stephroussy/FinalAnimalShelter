@@ -7,22 +7,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import com.animal.shelter.entity.Clients;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.servers.Server;
 
 @Validated
 @RequestMapping("/clients")
-@OpenAPIDefinition(info = @Info(title = "Clients"),
-    servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
 
 public interface ClientsController {
 
@@ -53,7 +47,7 @@ public interface ClientsController {
              content = @Content(mediaType = "application/json")),
      }
  )
- @GetMapping("/all")
+ @GetMapping("/allClients")
  @ResponseStatus(code = HttpStatus.OK)
  List<Clients> fetchAllClients();  
   
@@ -90,16 +84,15 @@ public interface ClientsController {
             @Parameter(
                 name = "clientLastName",
                 allowEmptyValue = false,
-                required = true,
+                required = false,
                 description = "The client's last name (i.e., 'Smith')") 
        }
     )
     
     // Get method (read)
-    @GetMapping("/clientbylastname")
+    @GetMapping("/ClientsByLastName")
     @ResponseStatus(code = HttpStatus.OK)
     List<Clients> fetchClientsByLastName(
-        @RequestParam(required = false)
         String clientLastName);
     
   //Reads client with specified client id
@@ -141,11 +134,10 @@ public interface ClientsController {
     )
     
     // Get method (read)
-    @GetMapping("/clientbyclientid")
+    @GetMapping("/ClientsByClientId")
     @ResponseStatus(code = HttpStatus.OK)
     List<Clients> fetchClientsByClientId(
-        @RequestParam(required = false)
-        int clientId);
+        Integer clientId);
     
   //Create a new client
 
@@ -198,16 +190,12 @@ public interface ClientsController {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     Clients createClients(
-        @RequestParam(required = false)
         String clientFirstName,
-        @RequestParam(required = false)
         String clientLastName,
-        @RequestParam(required = false)
         String address);
 
   //Update an existing client
   
-    
     @Operation(
         summary = "Updates a client",
         description = "Returns updated client",
@@ -262,7 +250,7 @@ public interface ClientsController {
  
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    Clients updateClients(int clientId, String clientFirstName, 
+    Clients updateClients(Integer clientId, String clientFirstName, 
         String clientLastName, String address); 
     // @formatter:on
 }

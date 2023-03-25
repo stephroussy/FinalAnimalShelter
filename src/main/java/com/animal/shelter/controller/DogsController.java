@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
@@ -25,7 +24,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 
 @Validated
 @RequestMapping("/Dogs")
-@OpenAPIDefinition(info = @Info(title = "Dogs"),
+@OpenAPIDefinition(info = @Info(title = "Animal Shelter"),
     servers = {@Server(url = "http://localhost:8080", description = "Local server.")})
 
 public interface DogsController {
@@ -60,7 +59,7 @@ public interface DogsController {
                     mediaType = "application/json")),
        }
     )
-    @GetMapping("/all")
+    @GetMapping("/allDogs")
     @ResponseStatus(code = HttpStatus.OK)
     List<Dogs> fetchAllDogs(); 
     
@@ -102,11 +101,9 @@ public interface DogsController {
     )
     
     // Get method (read)
-    @GetMapping("/dogsbysize")
+    @GetMapping("/dogsBySize")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Dogs> fetchDogsBySize(
-        @RequestParam(required = false)
-        Size size);
+    List<Dogs> fetchDogsBySize(Size size);
     
     //Reads a list of ALL dogs with a specified gender
     
@@ -146,11 +143,9 @@ public interface DogsController {
     )
     
     // Get method (read)
-    @GetMapping("/dogsbygender")
+    @GetMapping("/dogsByGender")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Dogs> fetchDogsByGender(
-        @RequestParam(required = false)
-        Gender gender);
+    List<Dogs> fetchDogsByGender(Gender gender);
     
   //Reads dog with specified dog id
     
@@ -190,11 +185,9 @@ public interface DogsController {
     )
     
     // Get method (read)
-    @GetMapping("/dogsbydogid")
+    @GetMapping("/dogsByDogId")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Dogs> fetchDogsByDogId(
-        @RequestParam(required = false)
-        int dogId);
+    List<Dogs> fetchDogsByDogId(int dogId);
    
   //Create a new dog
     
@@ -261,19 +254,7 @@ public interface DogsController {
     // Post method (Create)
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Dogs createDogs(
-       @RequestParam(required = false) 
-       String dogName,
-       @RequestParam(required = false) 
-       Gender gender,
-       @RequestParam(required = false) 
-       Date birthday,
-       @RequestParam(required = false) 
-       String breed,
-       @RequestParam(required = false)
-       Size size,
-       @RequestParam(required = false)
-       int clientId); 
+    Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size, Integer clientId); 
     
     @Operation(
         summary = "Updates a dog",
@@ -343,7 +324,7 @@ public interface DogsController {
     // Put method (Update)
    @PutMapping
    @ResponseStatus(code = HttpStatus.OK)
-   Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed, Size size, int clientId); 
+   Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed, Size size, Integer clientId); 
     
     //@formatter:on
 }
