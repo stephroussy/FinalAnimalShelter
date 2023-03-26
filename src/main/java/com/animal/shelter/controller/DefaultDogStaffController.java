@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import com.animal.shelter.controller.model.DogStaffDto;
-import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.DogStaff;
 import com.animal.shelter.service.DogStaffService;
 
