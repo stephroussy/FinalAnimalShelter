@@ -1,14 +1,17 @@
 package com.animal.shelter.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.animal.shelter.controller.model.StaffDto;
 import com.animal.shelter.entity.Staff;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -165,29 +168,16 @@ public interface StaffController {
                 description = "An unplanned error occurred.", 
                 content = @Content(
                     mediaType = "application/json"))
-        },
-        parameters = {
-            @Parameter(
-                name = "staffFirstName",
-                allowEmptyValue = false,
-                required = false,
-                description = "The Staff's first name (i.e., 'John')"),
-            @Parameter(
-                name = "staffLastName",
-                allowEmptyValue = false,
-                required = false,
-                description = "The Staff's last name (i.e., 'Smith')")
         }
     )
    
     // Post method (create)
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Staff createStaff(String staffFirstName, String staffLastName);
+    Staff createStaff(@Valid @RequestBody StaffDto staffDto);
 
   //Update an existing Staff
   
-    
     @Operation(
         summary = "Updates a Staff member",
         description = "Returns updated Staff member",
@@ -212,33 +202,18 @@ public interface StaffController {
                 responseCode = "500", 
                 description = "An unplanned error occurred.", 
                 content = @Content(
-                    mediaType = "application/json"))
-        },
-        
-            parameters = {
-                @Parameter(name = "staffId", 
-                    allowEmptyValue = false, 
-                    required = false, 
-                    description = "The Staff's id (i.e., '11')"),
-                @Parameter(
-                    name = "staffFirstName",
-                    allowEmptyValue = false,
-                    required = false,
-                    description = "The Staff's first name (i.e., 'John')"),
-                @Parameter(
-                    name = "staffLastName",
-                    allowEmptyValue = false,
-                    required = false,
-                    description = "The Staff's last name (i.e., 'Smith')")  
+                    mediaType = "application/json")) 
         }
     )
     
-    //Delete method
+    //Update method
  
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)
-    Staff updateStaff(int staffId, String staffFirstName, String staffLastName); 
+    Staff updateStaff(@Valid @RequestBody StaffDto staffDto); 
     // @formatter:on
+
+  // Delete an existing Staff
 
   @Operation(summary = "Deletes a staff member",
       description = "Delete a staff member given a required staff id",
@@ -252,13 +227,12 @@ public interface StaffController {
               description = "No staff member was found with the input criteria.",
               content = @Content(mediaType = "application/json")),
           @ApiResponse(responseCode = "500", description = "An unplanned error occurred.",
-              content = @Content(mediaType = "application/json"))},
-      parameters = {@Parameter(name = "staffId", allowEmptyValue = false, required = false,
-          description = "The staff id (i.e., '11')")})
+              content = @Content(mediaType = "application/json"))})
+
   // Delete method (Delete)
   @DeleteMapping
   @ResponseStatus(code = HttpStatus.OK)
-  void deleteStaff(int staffId);
+  void deleteStaff(@Valid @RequestBody StaffDto staffDto);
 
   //@formatter:on
 }

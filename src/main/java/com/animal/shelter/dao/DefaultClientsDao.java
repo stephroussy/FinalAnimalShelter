@@ -64,7 +64,7 @@ public class DefaultClientsDao implements ClientsDao {
     }
   }
 
-  // Get method to read clients with specified last name)
+  // Get method to read clients with specified last name
 
   public List<Clients> fetchClientsByLastName(String clientLastName) {
     // @formatter:off

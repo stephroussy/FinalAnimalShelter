@@ -14,7 +14,8 @@ public interface DogStaffService {
 
   DogStaff updateDogStaff(int dogId, int staffId);
 
-  // Put (update Clients)
+  // Get dogs by staff id
 
+  List<DogStaff> fetchDogsByStaffId(int staffId);
 
 }

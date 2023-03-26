@@ -28,4 +28,12 @@ public class DefaultDogStaffService implements DogStaffService {
     return dogStaffDao.updateDogStaff(dogId, staffId);
   }
 
+  // Get dogs by staff id
+  @Transactional(readOnly = true)
+  @Override
+  public List<DogStaff> fetchDogsByStaffId(int staffId) {
+    List<DogStaff> dogStaff = dogStaffDao.fetchDogsByStaffId(staffId);
+    return dogStaff;
+  }
+
 }

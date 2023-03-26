@@ -18,8 +18,8 @@ public class DefaultStaffService implements StaffService {
   @Transactional(readOnly = true)
   @Override
   public List<Staff> fetchAllStaff() {
-    List<Staff> Staff = staffDao.fetchAllStaff();
-    return Staff;
+    List<Staff> staff = staffDao.fetchAllStaff();
+    return staff;
   }
 
   // Get (read ALL Staff with specified last name)
@@ -27,8 +27,8 @@ public class DefaultStaffService implements StaffService {
   @Transactional(readOnly = true)
   @Override
   public List<Staff> fetchStaffByLastName(String staffLastName) {
-    List<Staff> Staff = staffDao.fetchStaffByLastName(staffLastName);
-    return Staff;
+    List<Staff> staff = staffDao.fetchStaffByLastName(staffLastName);
+    return staff;
   }
 
   // Get (read ALL Staff with specified staff id)
@@ -36,8 +36,8 @@ public class DefaultStaffService implements StaffService {
   @Transactional(readOnly = true)
   @Override
   public List<Staff> fetchStaffByStaffId(int staffId) {
-    List<Staff> Staff = staffDao.fetchStaffByStaffId(staffId);
-    return Staff;
+    List<Staff> staff = staffDao.fetchStaffByStaffId(staffId);
+    return staff;
   }
 
   // Post (create new Staff)

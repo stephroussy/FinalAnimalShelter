@@ -19,7 +19,6 @@ import com.animal.shelter.entity.Staff;
 @Component
 
 public class DefaultStaffDao implements StaffDao {
-
   @Autowired
   private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -30,7 +29,7 @@ public class DefaultStaffDao implements StaffDao {
     //@formatter:off
     String sql = ""
         + "SELECT * "
-        + "FROM Staff;";
+        + "FROM staff;";
     //@formatter:on
 
     // Map<String, Object> params = new HashMap<>(); May not need this
@@ -69,7 +68,7 @@ public class DefaultStaffDao implements StaffDao {
     // @formatter:off
     String sql = ""
         + "SELECT * "
-        + "FROM Staff "
+        + "FROM staff "
         + "WHERE staff_last_name = :staff_last_name;";
     // @formatter:on
 
@@ -90,15 +89,13 @@ public class DefaultStaffDao implements StaffDao {
     });
   }
 
-
-
   // Get method to read Staff with specified staff id)
 
   public List<Staff> fetchStaffByStaffId(int staffId) {
     // @formatter:off
     String sql = ""
         + "SELECT * "
-        + "FROM Staff "
+        + "FROM staff "
         + "WHERE staff_id = :staff_id;";
     // @formatter:on
 
@@ -124,7 +121,7 @@ public class DefaultStaffDao implements StaffDao {
   public Staff createStaff(String staffFirstName, String staffLastName) {
     SqlParams sqlparams = new SqlParams();
     KeyHolder keyHolder = new GeneratedKeyHolder();
-    sqlparams.sql = "" + "INSERT into Staff " + "(staff_first_name, staff_last_name)"
+    sqlparams.sql = "" + "INSERT into staff " + "(staff_first_name, staff_last_name)"
         + "VALUES (:staff_first_name, :staff_last_name)";
     sqlparams.source.addValue("staff_first_name", staffFirstName);
     sqlparams.source.addValue("staff_last_name", staffLastName);
@@ -147,7 +144,7 @@ public class DefaultStaffDao implements StaffDao {
   public Staff updateStaff(int staffId, String staffFirstName, String staffLastName) {
     //@formatter:off
      String sql = ""
-         + "UPDATE Staff "
+         + "UPDATE staff "
          + "SET " 
          + "staff_first_name = :staff_first_name, "
          + "staff_last_name = :staff_last_name, "

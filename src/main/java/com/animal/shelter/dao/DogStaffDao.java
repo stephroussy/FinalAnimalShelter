@@ -10,7 +10,10 @@ public interface DogStaffDao {
   List<DogStaff> fetchAllDogStaff();
 
   // Put (update dogs with staff)
-  
+
   DogStaff updateDogStaff(int dogId, int staffId);
+
+  // Get dogs by staff id
+  List<DogStaff> fetchDogsByStaffId(int staffId);
 
 }

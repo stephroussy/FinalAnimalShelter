@@ -1,9 +1,10 @@
 package com.animal.shelter.controller;
 
-import java.util.Date;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import com.animal.shelter.controller.model.DogsDto;
 import com.animal.shelter.entity.Dogs;
 import com.animal.shelter.entity.Gender;
 import com.animal.shelter.entity.Size;
@@ -46,16 +47,16 @@ public class DefaultDogsController implements DogsController {
 
   // Post (create dogs)
   @Override
-  public Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size,
-      Integer clientId) {
-    return dogService.createDogs(dogName, gender, birthday, breed, size, clientId);
+  public Dogs createDogs(@Valid DogsDto dogsDto) {
+    return dogService.createDogs(dogsDto.getDogName(),dogsDto.getGender(), 
+        dogsDto.getBirthday(), dogsDto.getBreed(), dogsDto.getSize(), dogsDto.getClientId());
   }
 
   // Put (update dogs)
   @Override
-  public Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed,
-      Size size, Integer clientId) {
-    return dogService.updateDogs(dogId, dogName, gender, birthday, breed, size, clientId);
+  public Dogs updateDogs(@Valid DogsDto dogsDto) {
+    return dogService.updateDogs(dogsDto.getDogId(), dogsDto.getDogName(), dogsDto.getGender(), 
+        dogsDto.getBirthday(), dogsDto.getBreed(), dogsDto.getSize(), dogsDto.getClientId());
   }
 
 }

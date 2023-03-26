@@ -1,14 +1,16 @@
 package com.animal.shelter.controller;
 
-import java.util.Date;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.animal.shelter.controller.model.DogsDto;
 import com.animal.shelter.entity.Clients;
 import com.animal.shelter.entity.Size;
 import com.animal.shelter.entity.Dogs;
@@ -216,45 +218,13 @@ public interface DogsController {
                 description = "An unplanned error occurred.", 
                 content = @Content(
                     mediaType = "application/json"))
-        },
-        parameters = {
-            @Parameter(
-                name = "dogName",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's name (i.e., 'Fido')"),
-            @Parameter(
-                name = "gender",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's gender (i.e., 'Male')"),
-            @Parameter(
-                name = "birthday",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's birthday (i.e., '2019-06-23')"),
-            @Parameter(
-                name = "breed",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's breed (i.e., 'Chow Chow')"),
-            @Parameter(
-                name = "size",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's size (i.e., 'Medium')"),
-            @Parameter(
-                name = "client_id",
-                allowEmptyValue = true,
-                required = false,
-                description = "The dog's owner's id(client id) (i.e., '11')") 
         }
     )
     
     // Post method (Create)
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    Dogs createDogs(String dogName, Gender gender, Date birthday, String breed, Size size, Integer clientId); 
+    Dogs createDogs(@Valid @RequestBody DogsDto dogsDto); 
     
     @Operation(
         summary = "Updates a dog",
@@ -281,50 +251,13 @@ public interface DogsController {
                 description = "An unplanned error occurred.", 
                 content = @Content(
                     mediaType = "application/json"))
-        },
-        parameters = {
-            @Parameter(
-                name = "dogId",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's id (i.e., '11')"), 
-            @Parameter(
-                name = "dogName",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's name (i.e., 'Fido')"),
-            @Parameter(
-                name = "gender",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's gender (i.e., 'Male')"),
-            @Parameter(
-                name = "birthday",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's birthday (i.e., '2019-06-23')"),
-            @Parameter(
-                name = "breed",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's breed (i.e., 'Chow Chow')"),
-            @Parameter(
-                name = "size",
-                allowEmptyValue = false,
-                required = false,
-                description = "The dog's size (i.e., 'Medium')"),
-            @Parameter(
-                name = "client_id",
-                allowEmptyValue = true,
-                required = false,
-                description = "The dog's owner's id(client id) (i.e., '11')") 
         }
     )
     
     // Put method (Update)
    @PutMapping
    @ResponseStatus(code = HttpStatus.OK)
-   Dogs updateDogs(int dogId, String dogName, Gender gender, Date birthday, String breed, Size size, Integer clientId); 
+   Dogs updateDogs(@Valid @RequestBody DogsDto dogsDto); 
     
     //@formatter:on
 }

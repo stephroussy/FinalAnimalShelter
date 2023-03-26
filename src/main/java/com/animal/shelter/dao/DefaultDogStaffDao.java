@@ -58,10 +58,10 @@ public class DefaultDogStaffDao implements DogStaffDao {
     }
   }
 
-//Put method to update Client within DogStaff table
+  // Put method to update Client within DogStaff table
 
- @Override
- public DogStaff updateDogStaff(int dogId, int staffId) {
+  @Override
+  public DogStaff updateDogStaff(int dogId, int staffId) {
    //@formatter:off
       String sql = ""
           + "UPDATE dog_staff "
@@ -70,11 +70,37 @@ public class DefaultDogStaffDao implements DogStaffDao {
           + "staff_id = :staff_id;";
       //@formatter:on
 
-   Map<String, Object> params = new HashMap<>();
-   params.put("dog_id", dogId);
-   params.put("staff_id", staffId);
+    Map<String, Object> params = new HashMap<>();
+    params.put("dog_id", dogId);
+    params.put("staff_id", staffId);
 
-   jdbcTemplate.update(sql, params);
-   return DogStaff.builder().dogId(dogId).staffId(staffId).build();
- }
+    jdbcTemplate.update(sql, params);
+    return DogStaff.builder().dogId(dogId).staffId(staffId).build();
+  }
+
+  // Get method to read dogs with specified staff id
+
+  public List<DogStaff> fetchDogsByStaffId(int staffId) {
+  // @formatter:off
+    String sql = ""
+        + "SELECT * "
+        + "FROM dog_staff "
+        + "WHERE staff_id = :staff_id;";
+    // @formatter:on
+
+    Map<String, Object> params = new HashMap<>();
+    params.put("staff_id", staffId);
+
+    return jdbcTemplate.query(sql, params, new RowMapper<>() {
+      @Override
+      public DogStaff mapRow(ResultSet rs, int rowNum) throws SQLException {
+      // @formatter:off
+            return DogStaff.builder()
+                .dogId(rs.getInt("dog_id"))
+                .staffId(rs.getInt("staff_id"))
+                .build();
+         // @formatter:on
+      }
+    });
+  }
 }

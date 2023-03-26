@@ -1,8 +1,10 @@
 package com.animal.shelter.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import com.animal.shelter.controller.model.StaffDto;
 import com.animal.shelter.entity.Staff;
 import com.animal.shelter.service.StaffService;
 
@@ -40,21 +42,22 @@ public class DefaultStaffController implements StaffController {
   // Post (create a staff member)
 
   @Override
-  public Staff createStaff(String staffFirstName, String staffLastName) {
-    return staffService.createStaff(staffFirstName, staffLastName);
+  public Staff createStaff(@Valid StaffDto staffDto) {
+    return staffService.createStaff(staffDto.GetStaffFirstName(), staffDto.GetStaffLastName());
   }
 
   // Put (update a staff member)
 
   @Override
-  public Staff updateStaff(int staffId, String staffFirstName, String staffLastName) {
-    return staffService.updateStaff(staffId, staffFirstName, staffLastName);
+  public Staff updateStaff(@Valid StaffDto staffDto) {
+    return staffService.updateStaff(staffDto.GetStaffId(), staffDto.GetStaffFirstName(), 
+        staffDto.GetStaffLastName());
   }
 
   // Delete staff
 
   @Override
-  public void deleteStaff(int staffId) {
-    staffService.deleteStaff(staffId);
+  public void deleteStaff(@Valid StaffDto staffDto) {
+    staffService.deleteStaff(staffDto.GetStaffId());
   }
 }

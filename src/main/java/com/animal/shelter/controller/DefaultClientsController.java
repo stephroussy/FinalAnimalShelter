@@ -1,8 +1,10 @@
 package com.animal.shelter.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
+import com.animal.shelter.controller.model.ClientDto;
 import com.animal.shelter.entity.Clients;
 import com.animal.shelter.service.ClientsService;
 
@@ -38,14 +40,15 @@ public class DefaultClientsController implements ClientsController {
 
   // Post (create clients)
   @Override
-  public Clients createClients(String clientFirstName, String clientLastName, String address) {
-    return clientService.createClients(clientFirstName, clientLastName, address);
+  public Clients createClients(@Valid ClientDto clientDto) {
+    return clientService.createClients(clientDto.getClientFirstName(), clientDto.getClientLastName(), 
+        clientDto.getAddress());
   }
 
   // Put (update Clients)
   @Override
-  public Clients updateClients(Integer clientId, String clientFirstName, String clientLastName,
-      String address) {
-    return clientService.updateClients(clientId, clientFirstName, clientLastName, address);
+  public Clients updateClients(@Valid ClientDto clientDto) {
+    return clientService.updateClients(clientDto.getClientId(), clientDto.getClientFirstName(), 
+        clientDto.getClientLastName(), clientDto.getAddress());
   }
 }
