@@ -29,7 +29,7 @@ public interface StaffController {
 //@formatter:off
  @Operation( 
      summary = "Returns a list of all the staff",
-     description = "Returns the list of staff",
+     description = "Returns a list of all the staff",
      responses = {
          @ApiResponse(
              responseCode = "200",
@@ -59,7 +59,7 @@ public interface StaffController {
  
   
     @Operation(
-        summary = "Returns a list of staff based on last names",
+        summary = "Returns a list of staff based on last name given",
         description = "Returns a list of staff given staff last names",
         responses = {
             @ApiResponse(
@@ -102,12 +102,12 @@ public interface StaffController {
    
   
     @Operation(
-        summary = "Returns a list of Staff based on staff id",
-        description = "Returns a list of Staff given staff id",
+        summary = "Returns a list of all staff based on id given",
+        description = "Returns a list of all staff given staff id",
         responses = {
             @ApiResponse(
                 responseCode = "200", 
-                description = "A list of Staff is returned based on staff id.", 
+                description = "A list of staff is returned based on staff id.", 
                 content = @Content(
                     mediaType = "application/json", 
                 schema = @Schema(implementation = Staff.class))),

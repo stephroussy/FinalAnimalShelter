@@ -35,8 +35,8 @@ public interface DogsController {
 
   //@formatter:off
     @Operation(
-        summary = "Returns a list of all the dogs",
-        description = "Returns the list of dogs",
+        summary = "Returns a list of all the dogs (past and present)",
+        description = "Returns the list of dogs (past and present)",
         responses = {
             @ApiResponse(
                 responseCode = "200", 

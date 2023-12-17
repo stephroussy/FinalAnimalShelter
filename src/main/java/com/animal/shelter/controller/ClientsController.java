@@ -59,7 +59,7 @@ public interface ClientsController {
   
     @Operation(
         summary = "Returns a list of clients based on last names",
-        description = "Returns a list of clients given client last names",
+        description = "Returns a list of clients with a specific last name",
         responses = {
             @ApiResponse(
                 responseCode = "200", 

@@ -26,8 +26,8 @@ public interface DogStaffController {
 
 //@formatter:off
  @Operation( 
-     summary = "Returns a list of all the Dogs and Staff in the shelter",
-     description = "Returns the list of all the Dogs and Staff in the shelter",
+     summary = "Returns a list of all the dogs and staff (past and present) in the shelter",
+     description = "Returns the list of all the dogs and staff (past and present) in the shelter",
      responses = {
          @ApiResponse(
              responseCode = "200",
@@ -57,8 +57,8 @@ public interface DogStaffController {
    
   
     @Operation(
-        summary = "Returns a list of Dogs cared for by specific Staff with id",
-        description = "Returns a list of Dogs cared for by Staff with id",
+        summary = "Returns a list of dogs cared for by specific staff member using staff id",
+        description = "Returns a list of dogs cared for by specific staff member using staff id",
         responses = {
             @ApiResponse(
                 responseCode = "200", 
