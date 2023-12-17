@@ -16,7 +16,7 @@ public interface StaffDao {
 
   // Get (read ALL Staff with specified staff id)
 
-  List<Staff> fetchStaffByStaffId(int staffId);
+  List<Staff> fetchStaffByStaffId(Integer staffId);
 
   // Post (create Staff)
 
@@ -24,10 +24,10 @@ public interface StaffDao {
 
   // Put (update Staff)
 
-  Staff updateStaff(int staffId, String staffFirstName, String staffLastName);
+  Staff updateStaff(Integer staffId, String staffFirstName, String staffLastName);
 
   // Delete staff
 
-  void deleteStaff(int staffId);
+  void deleteStaff(Integer staffId);
 
 }

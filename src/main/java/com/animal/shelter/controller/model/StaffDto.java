@@ -2,22 +2,22 @@ package com.animal.shelter.controller.model;
 
 public class StaffDto {
 
-  private int staffId;
+  private Integer staffId;
 
   private String staffFirstName;
 
   private String staffLastName;
-
-  public int GetStaffId() {
+  
+  public String getStaffLastName() {
+    return staffLastName;
+  }
+ 
+  public Integer getStaffId() {
     return staffId;
   }
-
-  public String GetStaffFirstName() {
+  
+  public String getStaffFirstName() {
     return staffFirstName;
-  }
-
-  public String GetStaffLastName() {
-    return staffLastName;
   }
 
 }

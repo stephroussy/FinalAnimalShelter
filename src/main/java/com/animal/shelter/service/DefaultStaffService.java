@@ -22,7 +22,7 @@ public class DefaultStaffService implements StaffService {
     return staff;
   }
 
-  // Get (read ALL Staff with specified last name)
+  // Get (read ALL staff with specified last name)
 
   @Transactional(readOnly = true)
   @Override
@@ -31,16 +31,16 @@ public class DefaultStaffService implements StaffService {
     return staff;
   }
 
-  // Get (read ALL Staff with specified staff id)
+  // Get (read ALL staff with specified staff id)
 
   @Transactional(readOnly = true)
   @Override
-  public List<Staff> fetchStaffByStaffId(int staffId) {
+  public List<Staff> fetchStaffByStaffId(Integer staffId) {
     List<Staff> staff = staffDao.fetchStaffByStaffId(staffId);
     return staff;
   }
 
-  // Post (create new Staff)
+  // Post (create new staff)
 
   @Override
   public Staff createStaff(String staffFirstName, String staffLastName) {
@@ -48,16 +48,16 @@ public class DefaultStaffService implements StaffService {
   }
 
 
-  // Put (update Staff)
+  // Put (update staff)
   @Override
-  public Staff updateStaff(int staffId, String staffFirstName, String staffLastName) {
+  public Staff updateStaff(Integer staffId, String staffFirstName, String staffLastName) {
     return staffDao.updateStaff(staffId, staffFirstName, staffLastName);
   }
 
   // Delete staff
 
   @Override
-  public void deleteStaff(int staffId) {
+  public void deleteStaff(Integer staffId) {
     staffDao.deleteStaff(staffId);
   }
 

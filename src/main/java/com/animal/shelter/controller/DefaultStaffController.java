@@ -34,7 +34,7 @@ public class DefaultStaffController implements StaffController {
   // Get (read ALL staff with specified staff id)
 
   @Override
-  public List<Staff> fetchStaffByStaffId(int staffId) {
+  public List<Staff> fetchStaffByStaffId(Integer staffId) {
     return staffService.fetchStaffByStaffId(staffId);
   }
 
@@ -43,21 +43,21 @@ public class DefaultStaffController implements StaffController {
 
   @Override
   public Staff createStaff(@Valid StaffDto staffDto) {
-    return staffService.createStaff(staffDto.GetStaffFirstName(), staffDto.GetStaffLastName());
+    return staffService.createStaff(staffDto.getStaffFirstName(), staffDto.getStaffLastName());
   }
 
   // Put (update a staff member)
 
   @Override
   public Staff updateStaff(@Valid StaffDto staffDto) {
-    return staffService.updateStaff(staffDto.GetStaffId(), staffDto.GetStaffFirstName(), 
-        staffDto.GetStaffLastName());
+    return staffService.updateStaff(staffDto.getStaffId(), staffDto.getStaffFirstName(), 
+        staffDto.getStaffLastName());
   }
 
   // Delete staff
 
   @Override
   public void deleteStaff(@Valid StaffDto staffDto) {
-    staffService.deleteStaff(staffDto.GetStaffId());
+    staffService.deleteStaff(staffDto.getStaffId());
   }
 }

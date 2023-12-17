@@ -6,28 +6,28 @@ import com.animal.shelter.entity.Staff;
 
 public interface StaffService {
 
-  // Get (read ALL Staff)
+  // Get (read ALL staff)
 
   List<Staff> fetchAllStaff();
 
-  // Get (read ALL Staff with specified last name)
+  // Get (read ALL staff with specified last name)
 
   List<Staff> fetchStaffByLastName(String staffLastName);
 
-  // Get (read ALL Staff with specified staff id)
+  // Get (read ALL staff with specified staff id)
 
-  List<Staff> fetchStaffByStaffId(int staffId);
+  List<Staff> fetchStaffByStaffId(Integer staffId);
 
-  // Post (create Staff)
+  // Post (create staff)
 
   Staff createStaff(String staffFirstName, String staffLastName);
 
-  // Put (update Staff)
+  // Put (update staff)
 
-  Staff updateStaff(int staffId, String staffFirstName, String staffLastName);
+  Staff updateStaff(Integer staffId, String staffFirstName, String staffLastName);
 
   // Delete staff
 
-  void deleteStaff(int staffId);
+  void deleteStaff(Integer staffId);
 
 }

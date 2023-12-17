@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 public class Staff {
 
-  private int staffId;
+  private Integer staffId;
 
   private String staffFirstName;
 

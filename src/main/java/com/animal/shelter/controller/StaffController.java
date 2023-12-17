@@ -20,11 +20,11 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @Validated
-@RequestMapping("/Staff")
+@RequestMapping("/staff")
 
 public interface StaffController {
 
-  // Reads a list of ALL Staff
+  // Reads a list of ALL staff
 
 //@formatter:off
  @Operation( 
@@ -94,7 +94,7 @@ public interface StaffController {
     )
     
     // Get method (read)
-    @GetMapping("/staffByLastName")
+    @GetMapping("/StaffByLastName")
     @ResponseStatus(code = HttpStatus.OK)
     List<Staff> fetchStaffByLastName(String staffLastName);
     
@@ -137,19 +137,19 @@ public interface StaffController {
     )
     
     // Get method (read)
-    @GetMapping("/staffByStaffId")
+    @GetMapping("/StaffByStaffId")
     @ResponseStatus(code = HttpStatus.OK)
-    List<Staff> fetchStaffByStaffId(int staffId);
+    List<Staff> fetchStaffByStaffId(Integer staffId);
     
   //Create a new Staff
 
     @Operation(
-        summary = "Creates a Staff member",
-        description = "Returns the created Staff member",
+        summary = "Creates a staff member",
+        description = "Returns the created staff member",
         responses = {
             @ApiResponse(
                 responseCode = "200", 
-                description = "A Staff member was created!", 
+                description = "A staff member was created!", 
                 content = @Content(
                     mediaType = "application/json", 
                 schema = @Schema(implementation = Staff.class))),
@@ -160,7 +160,7 @@ public interface StaffController {
                     mediaType = "application/json")),
             @ApiResponse(
                 responseCode = "404", 
-                description = "Unable to create a Staff member with the input criteria.", 
+                description = "Unable to create a staff member with the input criteria.", 
                 content = @Content(
                     mediaType = "application/json")),
             @ApiResponse(
@@ -179,12 +179,12 @@ public interface StaffController {
   //Update an existing Staff
   
     @Operation(
-        summary = "Updates a Staff member",
-        description = "Returns updated Staff member",
+        summary = "Updates a staff member",
+        description = "Returns updated staff member",
         responses = {
             @ApiResponse(
                 responseCode = "200", 
-                description = "A Staff member was updated!", 
+                description = "A staff member was updated!", 
                 content = @Content(
                     mediaType = "application/json", 
                 schema = @Schema(implementation = Staff.class))),
@@ -195,7 +195,7 @@ public interface StaffController {
                     mediaType = "application/json")),
             @ApiResponse(
                 responseCode = "404", 
-                description = "Unable to update the Staff member with the input criteria.", 
+                description = "Unable to update the staff member with the input criteria.", 
                 content = @Content(
                     mediaType = "application/json")),
             @ApiResponse(
@@ -206,7 +206,7 @@ public interface StaffController {
         }
     )
     
-    //Update method
+    //Put method (update)
  
     @PutMapping
     @ResponseStatus(code = HttpStatus.OK)

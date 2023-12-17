@@ -22,7 +22,7 @@ public class DefaultStaffDao implements StaffDao {
   @Autowired
   private NamedParameterJdbcTemplate jdbcTemplate;
 
-  // Get method to read the list of Staff from Staff database
+  // Get method to read the list of staff from staff database
 
   public List<Staff> fetchAllStaff() {
 
@@ -91,7 +91,7 @@ public class DefaultStaffDao implements StaffDao {
 
   // Get method to read Staff with specified staff id)
 
-  public List<Staff> fetchStaffByStaffId(int staffId) {
+  public List<Staff> fetchStaffByStaffId(Integer staffId) {
     // @formatter:off
     String sql = ""
         + "SELECT * "
@@ -121,8 +121,9 @@ public class DefaultStaffDao implements StaffDao {
   public Staff createStaff(String staffFirstName, String staffLastName) {
     SqlParams sqlparams = new SqlParams();
     KeyHolder keyHolder = new GeneratedKeyHolder();
-    sqlparams.sql = "" + "INSERT into staff " + "(staff_first_name, staff_last_name)"
-        + "VALUES (:staff_first_name, :staff_last_name)";
+    sqlparams.sql = 
+        "" + "INSERT into staff " + "(staff_first_name, staff_last_name)"
+    + "VALUES (:staff_first_name, :staff_last_name)";
     sqlparams.source.addValue("staff_first_name", staffFirstName);
     sqlparams.source.addValue("staff_last_name", staffLastName);
 
@@ -141,13 +142,13 @@ public class DefaultStaffDao implements StaffDao {
   // Put method to update staff within Staff table
 
   @Override
-  public Staff updateStaff(int staffId, String staffFirstName, String staffLastName) {
+  public Staff updateStaff(Integer staffId, String staffFirstName, String staffLastName) {
     //@formatter:off
      String sql = ""
          + "UPDATE staff "
          + "SET " 
          + "staff_first_name = :staff_first_name, "
-         + "staff_last_name = :staff_last_name, "
+         + "staff_last_name = :staff_last_name "
          + "WHERE staff_id = :staff_id;";
      //@formatter:on
 
@@ -163,7 +164,7 @@ public class DefaultStaffDao implements StaffDao {
 
   // Delete method to delete staff member within Staff table
   @Override
-  public void deleteStaff(int staffId) {
+  public void deleteStaff(Integer staffId) {
     //@formatter:off
      String sql = ""
          + "DELETE FROM staff "
